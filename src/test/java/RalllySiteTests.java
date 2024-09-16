@@ -31,6 +31,17 @@ public class RalllySiteTests {
         String actualEtap = driver.findElement(By.className("tracking-tight")).getText();
         Assertions.assertEquals(expectedEtap, actualEtap,"That's not what I expected it");
     }
+    @Test
+    public void placeholderTest(){
+        driver.get("http://localhost:3000/new");
+        WebElement titleField = driver.findElement(By.id("title"));
+        Assertions.assertEquals("Miesięczne spotkanie", titleField.getDomAttribute("placeholder"),"Placeholder has different value than expected.");
+        WebElement locationField = driver.findElement(By.id("location"));
+        Assertions.assertEquals("Sklep z kawą Joe", locationField.getDomAttribute("placeholder"),"Placeholder has different value than expected.");
+        WebElement descriptionField = driver.findElement(By.id("description"));
+        Assertions.assertEquals("Cześć wszystkim, wybierzcie terminy, które Wam pasują!", descriptionField.getDomAttribute("placeholder"),"Placeholder has different value than expected.");
+
+    }
 
     @AfterEach
     public void driverQuit(){
